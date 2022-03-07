@@ -5,17 +5,27 @@
  */
 package spaceship;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Juan David Rivera
  */
-public class SpaceShip {
+public class SpaceShip extends JFrame{ // extends JFrame para utilizar java swing
+    
+    //Variables estaticas para la dimension de la ventana
+    public static final int width_window = 800, height_window = 600;
 
-    /**
-     * @param args the command line arguments
-     */
+    public SpaceShip(){ //Constructor 
+        setTitle("Space Ship Game"); // Titulo de la ventana
+        setSize(width_window, height_window); // Tamaño de la pantalla
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Permite cerrar la ventana
+        setResizable(false); // para que la ventana no se pueda redimendionar
+        setLocationRelativeTo(null); // Hace que la pantalla se despliegue en el centro
+        setVisible(true); // Mostrar la ventana
+    }
     public static void main(String[] args) {
-        System.out.println("Prueba 01");
+        new SpaceShip();
     }
     
 }
