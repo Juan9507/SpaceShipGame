@@ -5,6 +5,7 @@
  */
 package spaceship;
 
+import graphics.Assets;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -53,9 +54,9 @@ public class SpaceShip extends JFrame implements Runnable{ // extends JFrame par
         new SpaceShip().start();
     }
     
-    int x = 0;
+    //int x = 0;
     private void update(){ //Actualizar
-        x++;
+        //x++;
     }
     
     private void draw(){ // Dibujar
@@ -70,9 +71,15 @@ public class SpaceShip extends JFrame implements Runnable{ // extends JFrame par
         
         //---------------------------------
         
-        g.clearRect(0, 0, getWidth(), getHeight());
+        //g.clearRect(0, 0, getWidth(), getHeight());
         
         //g.drawRect(x, 0, 100, 100); // es para dibujar un rectangulo
+        
+        g.setColor(Color.black);
+        
+        g.fillRect(0, 0, getWidth(), getHeight());
+        
+        g.drawImage(Assets.player, 100, 100, null);
         
         g.setColor(Color.blue);
         
@@ -82,6 +89,10 @@ public class SpaceShip extends JFrame implements Runnable{ // extends JFrame par
         g.dispose();
         bs.show();
     }
+    
+    private void init(){ //iniciar metodo estativo init
+        Assets.init();
+    }
 
     @Override
     public void run() {
@@ -90,12 +101,12 @@ public class SpaceShip extends JFrame implements Runnable{ // extends JFrame par
         long lastTime = System.nanoTime(); // Nos da el tiempo en nanosegundos
         int frames = 0; // variables para mostrar fotogramas por segundo
         long time = 0;
-        
+        init();
         // Ciclo principal que se encargara de actualizar la posicion de todos
         // los objetos del juego y dibujar una y potra vez
         while(running){
             now = System.nanoTime();
-            delta +=(now - lastTime)/ target_time; //obtener el tiempo que allá pasado
+            delta +=(now - lastTime)/ target_time; //obtener el tiempo que a pasado
             time += (now - lastTime);
             lastTime = now;
             
